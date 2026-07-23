@@ -188,7 +188,9 @@ def load_data_from_sheets():
 
 @app.route('/')
 def index():
-    if not os.path.exists(CREDENTIALS_FILE):
+    has_file = os.path.exists(CREDENTIALS_FILE)
+    has_env = os.environ.get("GOOGLE_CREDENTIALS") is not None
+    if not (has_file or has_env):
         return render_template('instructions.html')
     return render_template('index.html')
 
