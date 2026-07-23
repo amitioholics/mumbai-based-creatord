@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaReview AI - Instagram Profile Verification</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-brands fa-instagram logo-icon"></i>
+                    <span class="logo-text">InstaReview <span class="logo-highlight">AI</span></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span class="progress-title">Review Progress</span>
+                        <span id="progress-text" class="progress-value">0 / 0</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="search-box-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search username, email..." autocomplete="off">
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="pending">Pending</button>
+                    <button class="filter-tab" data-filter="approved">Yes</button>
+                    <button class="filter-tab" data-filter="rejected">No</button>
+                </div>
+            </div>
+
+            <!-- Profile List -->
+            <div class="profile-list-container">
+                <ul id="profile-list" class="profile-list">
+                    <!-- Dynamic profiles will be injected here -->
+                    <div class="loading-state">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Loading profiles...</p>
+                    </div>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <div class="header-left">
+                    <h1>Profile Evaluation Workspace</h1>
+                    <p class="subtitle">Review profiles, verify Instagram links, and track performance details</p>
+                </div>
+                <div class="header-right">
+                    <div class="shortcut-badge">
+                        <i class="fa-solid fa-keyboard"></i> Shortcuts Active
+                    </div>
+                </div>
+            </header>
+
+            <!-- Active Profile Review Area -->
+            <div id="review-card-container" class="review-card-container empty-state">
+                <div class="welcome-message">
+                    <div class="welcome-icon-wrapper">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                    <h2>Select a Profile to Review</h2>
+                    <p>Select a user from the sidebar list to view details, verify their Instagram page, and submit a decision.</p>
+                </div>
+            </div>
+            
+            <!-- Global Keyboard Shortcut Help Banner -->
+            <footer class="app-footer">
+                <div class="shortcuts-legend">
+                    <span class="legend-title"><i class="fa-solid fa-bolt"></i> Keyboard Shortcuts:</span>
+                    <span class="key-item"><kbd>Y</kbd> or <kbd>1</kbd> Yes</span>
+                    <span class="key-item"><kbd>N</kbd> or <kbd>2</kbd> No</span>
+                    <span class="key-item"><kbd>O</kbd> Open Profile</span>
+                    <span class="key-item"><kbd>←</kbd> Prev</span>
+                    <span class="key-item"><kbd>→</kbd> Next</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <i id="toast-icon" class="fa-solid fa-circle-check"></i>
+            <span id="toast-message">Message saved!</span>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

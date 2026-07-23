@@ -1,0 +1,7 @@
+credentials.json
+*.xlsx
+__pycache__/
+*.pyc
+.env
+.idea/
+.vscode/
