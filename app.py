@@ -26,6 +26,8 @@ def get_gspread_client():
     if creds_json_str:
         try:
             creds_info = json.loads(creds_json_str)
+            client_email = creds_info.get("client_email")
+            print(f"DEBUG: Loaded credentials from env var. Client email: {client_email}")
             creds = Credentials.from_service_account_info(creds_info, scopes=scopes)
             return gspread.authorize(creds)
         except Exception as e:
@@ -38,6 +40,7 @@ def get_gspread_client():
             "GOOGLE_CREDENTIALS environment variable is not set."
         )
     creds = Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=scopes)
+    print(f"DEBUG: Loaded credentials from file. Client email: {creds.service_account_email}")
     return gspread.authorize(creds)
 
 def get_spreadsheet(client):
